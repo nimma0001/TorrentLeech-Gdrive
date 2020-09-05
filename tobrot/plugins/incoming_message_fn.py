@@ -219,15 +219,21 @@ async def incoming_youtube_dl_f(client, message):
 #playlist
 async def g_yt_playlist(client, message):
     """ /pytdl command """
-    #i_m_sefg = await message.reply_text("Processing...you should wait🤗", quote=True)
+    #i_m_sefg = await message.reply_text("Processing...you should wait🤬", quote=True)
     usr_id = message.from_user.id
     G_DRIVE = False
     if len(message.command) > 1:
         if message.command[1] == "gdrive":
             G_DRIVE = True
-        i_m_sefg = await message.reply_text("Downloading...you should wait🤗", quote=True)
+        if message.command[1] == "gdrive":
+            G_DRIVE = True
+    if '.' in message.reply_to_message.text:
+        i_m_sefg = await message.reply_text("Downloading...you should wait fuck someone", quote=True)
         await yt_playlist_downg(message.reply_to_message, i_m_sefg, G_DRIVE)
-        
+    
+    else:
+        await message.reply_text("Reply to youtube playlist link only 🙄")        
+
  #
 async def g_clonee(client, message):
     """ /gclone command """
