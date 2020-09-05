@@ -4,8 +4,6 @@
 
 # the logging things
 import logging
-import sys
-sys.setrecursionlimit(10**4)
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -28,8 +26,7 @@ from tobrot import (
     EDIT_SLEEP_TIME_OUT,
     CUSTOM_FILE_NAME
 )
-from pyrogram.errors import MessageNotModified
-from pyrogram.types import (
+from pyrogram import (
 	InlineKeyboardButton,
 	InlineKeyboardMarkup,
 	Message
@@ -39,22 +36,29 @@ async def aria_start():
     aria2_daemon_start_cmd = []
     # start the daemon, aria2c command
     aria2_daemon_start_cmd.append("aria2c")
-    aria2_daemon_start_cmd.append("--allow-overwrite=true")
     aria2_daemon_start_cmd.append("--daemon=true")
     # aria2_daemon_start_cmd.append(f"--dir={DOWNLOAD_LOCATION}")
     # TODO: this does not work, need to investigate this.
     # but for now, https://t.me/TrollVoiceBot?start=858
     aria2_daemon_start_cmd.append("--enable-rpc")
+    aria2_daemon_start_cmd.append("--allow-overwrite=true")
+    aria2_daemon_start_cmd.append("--bt-detach-seed-only=true")
+    aria2_daemon_start_cmd.append("--peer-id-prefix=-TR2610-")
+    aria2_daemon_start_cmd.append("--user-agent=Transmission/2.61 (13407)")
     aria2_daemon_start_cmd.append("--follow-torrent=mem")
     aria2_daemon_start_cmd.append("--max-connection-per-server=10")
-    aria2_daemon_start_cmd.append("--min-split-size=10M")
+    aria2_daemon_start_cmd.append("--min-split-size=8M")
     aria2_daemon_start_cmd.append("--rpc-listen-all=false")
     aria2_daemon_start_cmd.append(f"--rpc-listen-port={ARIA_TWO_STARTED_PORT}")
     aria2_daemon_start_cmd.append("--rpc-max-request-size=1024M")
     aria2_daemon_start_cmd.append("--seed-ratio=0.0")
     aria2_daemon_start_cmd.append("--seed-time=1")
-    aria2_daemon_start_cmd.append("--max-overall-upload-limit=1K")
+    aria2_daemon_start_cmd.append("--max-concurrent-downloads=3")
+    aria2_daemon_start_cmd.append("--file-allocation=none")
     aria2_daemon_start_cmd.append("--split=10")
+    aria2_daemon_start_cmd.append("--continue")
+    aria2_daemon_start_cmd.append("--bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,udp://tracker.opentrackr.org:1337/announce,http://tracker.opentrackr.org:1337/announce,udp://tracker.leechers-paradise.org:6969/announce,udp://p4p.arenabg.ch:1337/announce,http://p4p.arenabg.com:1337/announce,udp://9.rarbg.to:2710/announce,udp://9.rarbg.me:2710/announce,udp://exodus.desync.com:6969/announce,udp://tracker.cyberia.is:6969/announce,udp://tracker.tiny-vps.com:6969/announce,udp://open.stealth.si:80/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.moeking.me:6969/announce,udp://retracker.lanta-net.ru:2710/announce,udp://tracker3.itzmx.com:6961/announce,http://tracker3.itzmx.com:6961/announce,http://tracker1.itzmx.com:8080/announce,udp://ipv4.tracker.harry.lu:80/announce,udp://bt2.archive.org:6969/announce,udp://bt1.archive.org:6969/announce,http://tracker4.itzmx.com:2710/announce,udp://tracker.uw0.xyz:6969/announce,http://tracker.nyap2p.com:8080/announce,udp://zephir.monocul.us:6969/announce,udp://valakas.rollo.dnsabr.com:2710/announce,udp://tracker.zerobytes.xyz:1337/announce,udp://tracker.ds.is:6969/announce,udp://tracker-udp.gbitt.info:80/announce,udp://retracker.akado-ural.ru:80/announce,udp://opentracker.i2p.rocks:6969/announce,udp://opentor.org:2710/announce,udp://explodie.org:6969/announce,https://trakx.herokuapp.com:443/announce,https://tracker.gbitt.info:443/announce,http://vps02.net.orel.ru:80/announce,http://tracker.zerobytes.xyz:1337/announce,http://tracker.gbitt.info:80/announce,http://tracker.anonwebz.xyz:8080/announce,http://opentracker.i2p.rocks:6969/announce,http://open.acgtracker.com:1096/announce,http://h4.trakx.nibba.trade:80/announce,http://explodie.org:6969/announce,udp://www.midea123.z-media.com.cn:6969/announce,udp://vps2.avc.cx:7171/announce,udp://vibe.community:6969/announce,udp://ultra.zt.ua:6969/announce,udp://u.wwwww.wtf:1/announce,udp://tsundere.pw:6969/announce,udp://tracker2.dler.org:80/announce,udp://tracker0.ufibox.com:6969/announce,udp://tracker.zooki.xyz:6969/announce,udp://tracker.zemoj.com:6969/announce,udp://tracker.yoshi210.com:6969/announce,udp://tracker.vulnix.sh:6969/announce,udp://tracker.v6speed.org:6969/announce,udp://tracker.shkinev.me:6969/announce,udp://tracker.publictracker.xyz:6969/announce,udp://tracker.lelux.fi:6969/announce,udp://tracker.dyne.org:6969/announce,udp://tracker.dler.org:6969/announce,udp://tracker.blacksparrowmedia.net:6969/announce,udp://tracker.army:6969/announce,udp://tracker.archlinux.org.theoks.net:6969/announce,udp://tr2.ysagin.top:2710/announce,udp://threads.run:6969/announce,udp://teamspeak.value-wolf.org:6969/announce,udp://t3.leech.ie:1337/announce,udp://t2.leech.ie:1337/announce,udp://t1.leech.ie:1337/announce,udp://storage.groupees.com:6969/announce,udp://sd-161673.dedibox.fr:6969/announce,udp://rutorrent.frontline-mod.com:6969/announce,udp://retracker.sevstar.net:2710/announce,udp://retracker.netbynet.ru:2710/announce,udp://retracker.local.msn-net.ru:6969/announce,udp://qg.lorzl.gq:2710/announce,udp://publictracker.xyz:6969/announce,udp://public.publictracker.xyz:6969/announce,udp://public-tracker.zooki.xyz:6969/announce,udp://nagios.tks.sumy.ua:80/announce,udp://mts.tvbit.co:6969/announce,udp://movies.zsw.ca:6969/announce,udp://mail.realliferpg.de:6969/announce,udp://ln.mtahost.co:6969/announce,udp://line-net.ru:6969/announce,udp://koli.services:6969/announce,udp://kawaii.social:6969/announce,udp://kanbooru.com:6969/announce,udp://kanal-4.de:6969/announce,udp://josueunhuit.com:6969/announce,udp://inferno.demonoid.is:3391/announce,udp://handrew.me:6969/announce,udp://gra1.joshkeegan.co.uk:6969/announce,udp://git.vulnix.sh:6969/announce,udp://free-tracker.zooki.xyz:6969/announce,udp://forever.publictracker.xyz:6969/announce,udp://forever-tracker.zooki.xyz:6969/announce,udp://fe.dealclub.de:6969/announce,udp://exponage-api.com:6969/announce,udp://engplus.ru:6969/announce,udp://eliastre100.fr:6969/announce,udp://edu.uifr.ru:6969/announce,udp://edenbridge.org.uk:6969/announce,udp://drumkitx.com:6969/announce,udp://dpiui.reedlan.com:6969/announce,udp://discord.heihachi.pw:6969/announce,udp://daveking.com:6969/announce,udp://cutiegirl.ru:6969/announce,udp://cpc69306-dudl11-0-0-cust33.16-1.cable.virginm.net:6969/announce,udp://contra.sf.ca.us:6969/announce,udp://code2chicken.nl:6969/announce,udp://chanchan.uchuu.co.uk:6969/announce,udp://cdn-2.gamecoast.org:6969/announce,udp://cdn-1.gamecoast.org:6969/announce,udp://bubu.mapfactor.com:6969/announce,udp://bms-hosxp.com:6969/announce,udp://blokas.io:6969/announce,udp://bitsparadise.info:6969/announce,udp://benouworldtrip.fr:6969/announce,udp://asger.xyz:6969/announce,udp://aruacfilmes.com.br:6969/announce,udp://api.bitumconference.ru:6969/announce,udp://adminion.n-blade.ru:6969/announce,udp://admin.videoenpoche.info:6969/announce,udp://adm.category5.tv:6969/announce,udp://aaa.army:8866/announce,udp://6ahddutb1ucc3cp.ru:6969/announce,udp://61626c.net:6969/announce,udp://47.ip-51-68-199.eu:6969/announce,https://w.wwwww.wtf:443/announce,https://tracker.sloppyta.co:443/announce,https://tracker.nitrix.me:443/announce,https://tracker.lelux.fi:443/announce,https://tracker.hama3.net:443/announce,https://atrack-asia-s1.114913.xyz:443/announce,https://aaa.army:8866/announce,https://1337.abcvg.info:443/announce,http://vps2.avc.cx:7171/announce,http://vpn.flying-datacenter.de:6969/announce,http://trun.tom.ru:80/announce,http://tracker2.dler.org:80/announce,http://tracker.yoshi210.com:6969/announce,http://tracker.ygsub.com:6969/announce,http://tracker.tyker.xyz:8080/announce,http://tracker.sloppyta.co:80/announce,http://tracker.lelux.fi:80/announce,http://tracker.dler.org:6969/announce,http://tracker.bt4g.com:2095/announce,http://torrenttracker.nwc.acsalaska.net:6969/announce,http://t.nyaatracker.com:80/announce,http://rt.tace.ru:80/announce,http://retracker.sevstar.net:2710/announce,http://pow7.com:80/announce,http://open.acgnxtracker.com:80/announce,http://ns3107607.ip-54-36-126.eu:6969/announce,http://dn42.smrsh.net:6969/announce,http://derpyradio.net:6969/announce,http://bobbialbano.com:6969/announce,http://aaa.army:8866/announce,http://0205.uptm.ch:6969/announce,udp://wassermann.online:6969/announce,udp://tracker6.dler.org:2710/announce,udp://tracker4.itzmx.com:2710/announce,udp://tracker2.itzmx.com:6961/announce,udp://tracker.zum.bi:6969/announce,udp://tracker.teambelgium.net:6969/announce,udp://tracker.skynetcloud.site:6969/announce,udp://tracker.kali.org:6969/announce,udp://tracker.jae.moe:6969/announce,udp://tracker.filemail.com:6969/announce,udp://tracker.burncycl.net:6969/announce,udp://tracker.3304399.com:6969/announce,udp://tr.cili001.com:8070/announce,udp://tr.bangumi.moe:6969/announce,udp://opentracker.arg.bz:6969/announce,udp://open.lolicon.eu:7777/announce,udp://ns389251.ovh.net:6969/announce,udp://ns-1.x-fins.com:6969/announce,udp://f68.n5022.z2.binkp.net:6969/announce,udp://concen.org:6969/announce,udp://camera.lei001.com:6969/announce,udp://bt2.54new.com:8080/announce,udp://bt.firebit.org:2710/announce,udp://bioquantum.co.za:6969/announce,udp://bclearning.top:6969/announce,udp://anidex.moe:6969/announce,https://tracker.tamersunion.org:443/announce,https://tracker.jae.moe:443/announce,https://tracker.imgoingto.icu:443/announce,http://tracker2.itzmx.com:6961/announce,http://tracker.zum.bi:6969/announce,http://tracker.torrent.zond.org:80/announce,http://t.jaekr.sh:6969/announce,http://t.acg.rip:6699/announce,http://bandari.org:6969/announce,http://ankeschwarz.net:6969/announce")
+    aria2_daemon_start_cmd.append("--bt-seed-unverified=false")
     aria2_daemon_start_cmd.append(f"--bt-stop-timeout={MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START}")
     #
     LOGGER.info(aria2_daemon_start_cmd)
@@ -428,7 +432,6 @@ async def call_apropriate_function_t(
 
 # https://github.com/jaskaranSM/UniBorg/blob/6d35cf452bce1204613929d4da7530058785b6b1/stdplugins/aria.py#L136-L164
 async def check_progress_for_dl(aria2, gid, event, previous_message):
-    #g_id = event.reply_to_message.from_user.id
     try:
         file = aria2.get_download(gid)
         complete = file.is_complete
@@ -447,23 +450,19 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 except:
                     pass
                 #
+                msg = f"\nDownloading File: `{downloading_dir_name}`"
+                msg += f"\nSpeed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
+                msg += f"\nProgress: {file.progress_string()}"
+                msg += f"\nTotal Size: {file.total_length_string()}"
+
                 if is_file is None :
-                   msgg = f"Conn: {file.connections} <b>|</b> GID: <code>{gid}</code>"
+                   msg += f"\n<b>Connections:</b> {file.connections}"
                 else :
-                   msgg = f"P: {file.connections} | S: {file.num_seeders} <b>|</b> GID: <code>{gid}</code>"
-                msg = f"\n`{downloading_dir_name}`"
-                msg += f"\n<b>Speed</b>: {file.download_speed_string()}"
-                msg += f"\n<b>Status</b>: {file.progress_string()} <b>of</b> {file.total_length_string()} <b>|</b> {file.eta_string()} <b>|</b> {msgg}"
-                #msg += f"\nSize: {file.total_length_string()}"
+                   msg += f"\n<b>Info:</b>[ P : {file.connections} || S : {file.num_seeders} ]"
 
-                #if is_file is None :
-                   #msg += f"\n<b>Conn:</b> {file.connections}, GID: <code>{gid}</code>"
-                #else :
-                   #msg += f"\n<b>Info:</b>[ P : {file.connections} | S : {file.num_seeders} ], GID: <code>{gid}</code>"
-
-                #msg += f"\nStatus: {file.status}"
-                #msg += f"\nETA: {file.eta_string()}"
-                #msg += f"\nGID: <code>{gid}</code>"
+                # msg += f"\nStatus: {file.status}"
+                msg += f"\nETA: {file.eta_string()}"
+                msg += f"\nGID: <code>{gid}</code>"
                 inline_keyboard = []
                 ikeyboard = []
                 ikeyboard.append(InlineKeyboardButton("Cancel 🚫", callback_data=(f"cancel {gid}").encode("UTF-8")))
@@ -483,30 +482,21 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             await check_progress_for_dl(aria2, gid, event, previous_message)
         else:
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-            await event.edit(f"Downloaded Successfully: `{file.name}` 🤒")
+            await event.edit(f"File Downloaded Successfully: `{file.name}`")
             return True
-    except aria2p.client.ClientException:
-        pass
-    except MessageNotModified:
-        pass
-    except RecursionError:
-        file.remove(force=True)
-        await event.edit(
-            "Download Auto Canceled :\n\n"
-            "Your Torrent/Link is Dead.".format(
-                file.name
-            )
-        )
-        return False
     except Exception as e:
         LOGGER.info(str(e))
         if " not found" in str(e) or "'file'" in str(e):
-            await event.edit("Download Canceled :\n<code>{}</code>".format(file.name))
+            await event.edit("Download Canceled")
+            return False
+        elif " depth exceeded" in str(e):
+            file.remove(force=True)
+            await event.edit("Download Auto Canceled\nYour Torrent/Link is Dead.")
             return False
         else:
             LOGGER.info(str(e))
-            await event.edit("<u>error</u> :\n<code>{}</code> \n\n#error".format(str(e)))
-            return False
+            await event.edit("<u>error</u> :\n`{}` \n\n#error".format(str(e)))
+            return
 # https://github.com/jaskaranSM/UniBorg/blob/6d35cf452bce1204613929d4da7530058785b6b1/stdplugins/aria.py#L136-L164
 
 
