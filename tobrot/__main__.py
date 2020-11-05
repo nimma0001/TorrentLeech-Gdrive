@@ -109,7 +109,7 @@ if __name__ == "__main__" :
     #
     incoming_g_clear_handler = MessageHandler(
         g_clearme,
-        filters=filters.command(["renewme"]) & filters.chat(chats=AUTH_CHANNEL)
+        filters=filters.command(["renewme@speedlestbot"]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(incoming_g_clear_handler)
     #
