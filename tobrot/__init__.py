@@ -7,7 +7,7 @@ import time
 import logging
 
 # the secret configuration specific things
-if bool(os.environ.get("ENV", trure)):
+if bool(os.environ.get("ENV", true)):
     from tobrot.sample_config import Config
 from logging.handlers import RotatingFileHandler
 
