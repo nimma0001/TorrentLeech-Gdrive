@@ -227,7 +227,7 @@ async def g_yt_playlist(client, message):
             G_DRIVE = True
         if message.command[1] == "gdrive":
             G_DRIVE = True
-    if '.' in message.reply_to_message.text:
+    if 'http' in message.reply_to_message.text:
         i_m_sefg = await message.reply_text("Downloading...you should wait fuck someone", quote=True)
         await yt_playlist_downg(message.reply_to_message, i_m_sefg, G_DRIVE)
     
