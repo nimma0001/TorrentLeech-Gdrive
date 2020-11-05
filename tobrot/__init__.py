@@ -8,6 +8,7 @@ import logging
 
 # the secret configuration specific things
 if bool(os.environ.get("ENV", false)):
+   from tobrot.sample_config import Config
 from logging.handlers import RotatingFileHandler
 
 # TODO: is there a better way?
