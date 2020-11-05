@@ -18,38 +18,46 @@ API_HASH = "5e52bbf5687e959215ba2a9463eee2ba"
 OWNER_ID = "1111350430"
 AUTH_CHANNEL = "-1001153895452"
 DOWNLOAD_LOCATION = "./DOWNLOADS"
-MAX_FILE_SIZE = Config.MAX_FILE_SIZE
-TG_MAX_FILE_SIZE = Config.TG_MAX_FILE_SIZE
-FREE_USER_MAX_FILE_SIZE = Config.FREE_USER_MAX_FILE_SIZE
-CHUNK_SIZE = Config.CHUNK_SIZE
-DEF_THUMB_NAIL_VID_S = Config.DEF_THUMB_NAIL_VID_S
-MAX_MESSAGE_LENGTH = Config.MAX_MESSAGE_LENGTH
-PROCESS_MAX_TIMEOUT = Config.PROCESS_MAX_TIMEOUT
-ARIA_TWO_STARTED_PORT = Config.ARIA_TWO_STARTED_PORT
-EDIT_SLEEP_TIME_OUT = Config.EDIT_SLEEP_TIME_OUT
-MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START = Config.MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START
-MAX_TG_SPLIT_FILE_SIZE = Config.MAX_TG_SPLIT_FILE_SIZE
-FINISHED_PROGRESS_STR = Config.FINISHED_PROGRESS_STR
-UN_FINISHED_PROGRESS_STR = Config.UN_FINISHED_PROGRESS_STR
-TG_OFFENSIVE_API = Config.TG_OFFENSIVE_API
-CUSTOM_FILE_NAME = Config.CUSTOM_FILE_NAME
-LEECH_COMMAND = Config.LEECH_COMMAND
-YTDL_COMMAND = Config.YTDL_COMMAND
-RCLONE_CONFIG = Config.RCLONE_CONFIG
-DESTINATION_FOLDER = Config.DESTINATION_FOLDER
-GLEECH_COMMAND = Config.GLEECH_COMMAND
-INDEX_LINK = Config.INDEX_LINK
-TELEGRAM_LEECH_COMMAND_G = Config.TELEGRAM_LEECH_COMMAND_G
-CANCEL_COMMAND_G = Config.CANCEL_COMMAND_G
-GET_SIZE_G = Config.GET_SIZE_G
-STATUS_COMMAND = Config.STATUS_COMMAND
-SAVE_THUMBNAIL = Config.SAVE_THUMBNAIL
-CLEAR_THUMBNAIL = Config.CLEAR_THUMBNAIL
-UPLOAD_AS_DOC = Config.UPLOAD_AS_DOC
-BOT_START_TIME = time.time()
-PYTDL_COMMAND_G = Config.PYTDL_COMMAND_G
-LOG_COMMAND = Config.LOG_COMMAND
-CLONE_COMMAND_G = Config.CLONE_COMMAND_G
+DOWNLOAD_LOCATION = "./DOWNLOADS"
+    # Telegram maximum file upload size
+    MAX_FILE_SIZE = 50000000
+    TG_MAX_FILE_SIZE = 2097152000
+    FREE_USER_MAX_FILE_SIZE = 50000000
+    # chunk size that should be used with requests
+    CHUNK_SIZE = int(os.environ.get("CHUNK_SIZE", 128))
+    # default thumbnail to be used in the videos
+    DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "https://placehold.it/90x90")
+    # maximum message length in Telegram
+    MAX_MESSAGE_LENGTH = 4096
+    # set timeout for subprocess
+    PROCESS_MAX_TIMEOUT = 3600
+    #
+    ARIA_TWO_STARTED_PORT = int(os.environ.get("ARIA_TWO_STARTED_PORT", 6800))
+    EDIT_SLEEP_TIME_OUT = int(os.environ.get("EDIT_SLEEP_TIME_OUT", 15))
+    MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START = int(os.environ.get("MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START", 600))
+    MAX_TG_SPLIT_FILE_SIZE = int(os.environ.get("MAX_TG_SPLIT_FILE_SIZE", 1072864000))
+    # add config vars for the display progress
+    FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR", "█")
+    UN_FINISHED_PROGRESS_STR = os.environ.get("UN_FINISHED_PROGRESS_STR", "░")
+    # add offensive API
+    TG_OFFENSIVE_API = os.environ.get("TG_OFFENSIVE_API", None)
+    CUSTOM_FILE_NAME = os.environ.get("CUSTOM_FILE_NAME", "")
+    LEECH_COMMAND = os.environ.get("LEECH_COMMAND", "leech")
+    YTDL_COMMAND = os.environ.get("YTDL_COMMAND", "ytdl")
+    RCLONE_CONFIG = os.environ.get("RCLONE_CONFIG", "")
+    DESTINATION_FOLDER = os.environ.get("DESTINATION_FOLDER", "TorrentLeech-Gdrive")
+    GLEECH_COMMAND = os.environ.get("GLEECH_COMMAND", "gleech")
+    INDEX_LINK = os.environ.get("INDEX_LINK", "")
+    TELEGRAM_LEECH_COMMAND_G = os.environ.get("TELEGRAM_LEECH_COMMAND_G", "tleech")
+    CANCEL_COMMAND_G = os.environ.get("CANCEL_COMMAND_G", "cancel")
+    GET_SIZE_G = os.environ.get("GET_SIZE_G", "getsize")
+    STATUS_COMMAND = os.environ.get("STATUS_COMMAND", "status")
+    SAVE_THUMBNAIL = os.environ.get("SAVE_THUMBNAIL", "savethumbnail")
+    CLEAR_THUMBNAIL = os.environ.get("CLEAR_THUMBNAIL", "clearthumbnail")
+    UPLOAD_AS_DOC = os.environ.get("UPLOAD_AS_DOC", "False")
+    PYTDL_COMMAND_G = os.environ.get("PYTDL_COMMAND_G", "pytdl")
+    LOG_COMMAND = os.environ.get("LOG_COMMAND", "log")
+    CLONE_COMMAND_G = os.environ.get("CLONE_COMMAND_G", "gclone")
 
 if os.path.exists("TorrentLeech-Gdrive.txt"):
 	with open("Torrentleech-Gdrive.txt", "r+") as f_d:
