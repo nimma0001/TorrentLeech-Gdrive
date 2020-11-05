@@ -7,20 +7,19 @@ import time
 import logging
 
 # the secret configuration specific things
-if bool(os.environ.get("ENV", true)):
-    from tobrot.sample_config import Config
+if bool(os.environ.get("ENV", false)):
 from logging.handlers import RotatingFileHandler
 
 # TODO: is there a better way?
-TG_BOT_TOKEN = Config.TG_BOT_TOKEN
-APP_ID = Config.APP_ID
-API_HASH = Config.API_HASH
-OWNER_ID = Config.OWNER_ID
-AUTH_CHANNEL = list(Config.AUTH_CHANNEL)
-AUTH_CHANNEL.append(539295917)
+TG_BOT_TOKEN = 1387711232:AAFImx_lJbd_q0Zbidwd_jxXoI07t62zr7Q
+APP_ID = 1250468
+API_HASH = 5e52bbf5687e959215ba2a9463eee2ba
+OWNER_ID = 1111350430
+AUTH_CHANNEL = list(-1001153895452)
+AUTH_CHANNEL.append(1111350430)
 AUTH_CHANNEL.append(OWNER_ID)
 AUTH_CHANNEL = list(set(AUTH_CHANNEL))
-DOWNLOAD_LOCATION = Config.DOWNLOAD_LOCATION
+DOWNLOAD_LOCATION = "./DOWNLOADS"
 MAX_FILE_SIZE = Config.MAX_FILE_SIZE
 TG_MAX_FILE_SIZE = Config.TG_MAX_FILE_SIZE
 FREE_USER_MAX_FILE_SIZE = Config.FREE_USER_MAX_FILE_SIZE
