@@ -13,9 +13,9 @@ from logging.handlers import RotatingFileHandler
 
 # TODO: is there a better way?
 TG_BOT_TOKEN = "1387711232:AAFImx_lJbd_q0Zbidwd_jxXoI07t62zr7Q"
-APP_ID = 1250468
-API_HASH = 5e52bbf5687e959215ba2a9463eee2ba
-OWNER_ID = 1111350430
+APP_ID = "1250468"
+API_HASH = "5e52bbf5687e959215ba2a9463eee2ba"
+OWNER_ID = "1111350430"
 AUTH_CHANNEL = list(-1001153895452)
 AUTH_CHANNEL.append(1111350430)
 AUTH_CHANNEL.append(OWNER_ID)
