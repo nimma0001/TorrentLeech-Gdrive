@@ -20,7 +20,7 @@ AUTH_CHANNEL = "-1001153895452"
 DOWNLOAD_LOCATION = "./DOWNLOADS"
 DOWNLOAD_LOCATION = "./DOWNLOADS"
     # Telegram maximum file upload size
-    MAX_FILE_SIZE = 50000000
+    MAX_FILE_SIZE = "50000000"
     TG_MAX_FILE_SIZE = 2097152000
     FREE_USER_MAX_FILE_SIZE = 50000000
     # chunk size that should be used with requests
