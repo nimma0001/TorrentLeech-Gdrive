@@ -1,4 +1,4 @@
-from tobrot.sample_config import Config
+import os
 
 #read readme too before filling these stuffs
 
