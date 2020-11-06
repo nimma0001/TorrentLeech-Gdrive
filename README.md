@@ -48,9 +48,51 @@ e)It should look like `app.json`. 🎉
 
 f)Then tap 👇👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) #Revived
+ Heroku is not supported now 😕 #Dead
 
 Better buy a vps 😐 and follow [this](https://github.com/gautamajay52/TorrentLeech-Gdrive#process-to-run-this-bot-on-vps)
+
+## Process to run this BOT on VPS
+
+- Clone this repo:
+```
+git clone https://github.com/gautamajay52/TorrentLeech-Gdrive torrentleech-gdrive
+cd torrentleech-gdrive
+```
+
+- Install requirements
+For Debian based distros
+```
+sudo apt install python3
+
+sudo snap install docker
+```
+Install Docker by following the [official docker docs](https://docs.docker.com/engine/install/debian/)
+
+## Setting up config file
+```
+cp tobrot/g_config.py tobrot/config.py
+```
+After this step you will see a new file named ```config.py``` in tobrot directory.
+
+Follow and fill all the required variables that were already filled in the sample config file, but with your details. And you can also fill all other variables according to your need and all those are explained below.
+
+If you need more explanation about any variable then read [app.jso](https://github.com/gautamajay52/TorrentLeech-Gdrive/blob/master/app.jso)
+
+## Deploying
+
+- Start docker daemon (skip if already running):
+```
+sudo dockerd
+```
+- Build Docker image:
+```
+sudo docker build . -t torrentleech-gdrive
+```
+- Run the image:
+```
+sudo docker run torrentleech-gdrive
+```
 
 ### The Legacy Way
 Simply clone the repository and run the main file:
@@ -230,10 +272,10 @@ and everythin except `[NAME]`
 * `/renewme`: This will clear the remains of downloads which are not getting deleted after upload of the file or after /cancel command. 
 
 
-* [Only work with direct link and youtube link for now]It is like u can add custom name as prefix of the original file name.
+* ~Only work with direct link and youtube link for now~It is like u can add custom name as prefix of the original file name.
 Like if your file name is `gk.txt` uploaded will be what u add in `CUSTOM_FILE_NAME` + `gk.txt`
 
-Only works with direct link/youtube link.No magnet or torrent.
+~Only works with direct link/youtube link.No magnet or torrent.~
 
 And also added custom name like...
 
@@ -241,44 +283,6 @@ You have to pass link as
 `www.download.me/gk.txt | new.txt`
 
 the file will be uploaded as `new.txt`.
-
-## Process to run this BOT on VPS
-
-- Clone this repo:
-```
-git clone https://github.com/gautamajay52/TorrentLeech-Gdrive torrentleech-gdrive
-cd torrentleech-gdrive
-```
-
-- Install requirements
-For Debian based distros
-```
-sudo apt install python3
-
-sudo snap install docker
-```
-Install Docker by following the [official docker docs](https://docs.docker.com/engine/install/debian/)
-
-## Setting up config file
-```
-cp tobrot/g_config.py tobrot/config.py
-```
-Follow and fill all the required variables that were already filled in the sample config file, but with your details. And you can also fill all other variables according to your need and all those are explained above already.
-
-## Deploying
-
-- Start docker daemon (skip if already running):
-```
-sudo dockerd
-```
-- Build Docker image:
-```
-sudo docker build . -t torrentleech-gdrive
-```
-- Run the image:
-```
-sudo docker run torrentleech-gdrive
-```
 
 
 ## How to Use?
