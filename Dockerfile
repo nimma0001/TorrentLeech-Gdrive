@@ -10,12 +10,12 @@ RUN apt -qq update
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
 ENV AUTH_CHANNEL="-1001153895452 754658818 691522795"
-ENV API_HASH="5e52bbf5687e959215ba2a9463eee2ba"
-ENV APP_ID=1250468
-#ENV API_HASH="b7b0949f6eefb3927c20c1684dff4958"
-#ENV APP_ID=1138546
-#ENV TG_BOT_TOKEN="1325327590:AAFZheshKOZ21gKSYxe5kHEfRHZJXGbMxas"
-ENV TG_BOT_TOKEN="1387711232:AAFImx_lJbd_q0Zbidwd_jxXoI07t62zr7Q"
+#ENV API_HASH="5e52bbf5687e959215ba2a9463eee2ba"
+#ENV APP_ID=1250468
+ENV API_HASH="b7b0949f6eefb3927c20c1684dff4958"
+ENV APP_ID=1138546
+ENV TG_BOT_TOKEN="1325327590:AAFZheshKOZ21gKSYxe5kHEfRHZJXGbMxas"
+#ENV TG_BOT_TOKEN="1387711232:AAFImx_lJbd_q0Zbidwd_jxXoI07t62zr7Q"
 ENV LEECH_COMMAND="leech@movieuplbot"
 ENV YTDL_COMMAND="ytdl@movieuplbot"
 ENV GLEECH_COMMAND="gleech@movieuplbot"
@@ -27,7 +27,7 @@ ENV INDEX_LINK="https://folderdownload.freemovies.workers.dev/Movie"
 ENV SAVE_THUMBNAIL="savethumbnail@movieuplbot"
 ENV CLEAR_THUMBNAIL="clearthumbnail@movieuplbot"
 ENV OWNER_ID="1111350430"
-
+#ENV DESTINATION_FOLDER=Movie
 ENV CUSTOM_FILE_NAME=" @VbOnTheWeBTeleGram "
 #ENV RCLONE_CONFIG="type = drive\nclient_id = 472268816510-rtc4kmaeb4620fn0163pn2gjid2noohe.apps.googleusercontent.com\nclient_secret = zGz5xkWy-oKfsXrplvoAmkbL\nscope = drive\ntoken = {"access_token":"ya29.A0AfH6SMBMeCOCM1u8KzqXMsF7_5PRP4bxPfwx6pbWBP-sk3d8T23pnkZGlDXvjlYNuedQT3KLoh3ZInqlwsmmgb-D_ZBFBxiU1WkAGzDeKywr5yJs0oJ9dRgSwkJwS4tSX-42ZHBe7njZdGoKH5bpUDYc2DmLT9e2KgypPe7ipYmEAQ","token_type":"Bearer","refresh_token":"1//0gT8JP3cD8fhmCgYIARAAGBASNwF-L9IraC6WmaP3cnkdg1Po-nJGYB27zClC7pjmYDz1j_QRZeV16qXwIyZINEx4Dxd__e7s1c0","expiry":"2020-10-23T10:34:50.284204302+05:30"}"
 
