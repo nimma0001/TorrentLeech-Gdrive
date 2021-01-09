@@ -45,6 +45,9 @@ async def aria_start():
     # TODO: this does not work, need to investigate this.
     # but for now, https://t.me/TrollVoiceBot?start=858
     aria2_daemon_start_cmd.append("--enable-rpc")
+    aria2_daemon_start_cmd.append("--user-agent=Transmission/1.32 (6455) Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 #Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36 Edg/85.0.564.41)")
+    aria2_daemon_start_cmd.append("--peer-agent=Transmission/1.32 (6455)")
+    aria2_daemon_start_cmd.append("--perr-id-prefix=-TR1330-")
     aria2_daemon_start_cmd.append("--follow-torrent=mem")
     aria2_daemon_start_cmd.append("--max-connection-per-server=10")
     aria2_daemon_start_cmd.append("--min-split-size=10M")
