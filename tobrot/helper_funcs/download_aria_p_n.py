@@ -46,7 +46,7 @@ async def aria_start():
     # but for now, https://t.me/TrollVoiceBot?start=858
     aria2_daemon_start_cmd.append("--enable-rpc")
     aria2_daemon_start_cmd.append("--peer-agent=uTorrent/355(111915804)(45852)")
-    aria2_daemon_start_cmd.append("--perr-id-prefix=-TR1330-")
+    aria2_daemon_start_cmd.append("--peer-id-prefix=-UT3550-")
     aria2_daemon_start_cmd.append("--follow-torrent=mem")
     aria2_daemon_start_cmd.append("--max-connection-per-server=10")
     aria2_daemon_start_cmd.append("--min-split-size=10M")
